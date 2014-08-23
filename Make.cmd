@@ -1,1 +1,1 @@
-coffee --compile --output lib/ src/
+coffee --compile --no-header --output lib/ src/
