@@ -60,6 +60,17 @@ class Collection
 			return _.where(@items, selection)
 
 	# Updatig data
+	update: (cid, obj) ->
+		for element, i in @items
+			if element.cid is cid
+				obj['cid'] = `this.items[i]['cid']`
+				obj['$created'] = `this.items[i]['$created']`
+				obj['$updated'] = (new Date).toJSON()
+				for key of obj
+					`this.items[i][key] = obj[key]`
+				return true
+		return false
+
 	replace: (cid, obj) -> # the element at cid well be remplaced with obj with the same cid an $created property
 		for element, i in @items
 			if element.cid is cid
