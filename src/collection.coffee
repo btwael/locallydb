@@ -92,4 +92,18 @@ class Collection
 				return true
 		return false
 
+	deleteProperty: (cid, property) ->
+		for element, i in @items
+			if element.cid is cid
+				if property instanceof Array
+					properties = property
+					for property in properties
+						if element[property]?
+							`delete this.items[i][property]`
+				else
+					if element[property]?
+						`delete this.items[i][property]`
+				return true
+		return false
+
 module.exports = Collection
