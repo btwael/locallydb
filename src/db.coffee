@@ -11,7 +11,7 @@ class DB
 		else
 			fs.mkdirSync(path)
 
-	collection: (name) ->
-		return new Collection(name, @)
+	collection: (name, autosave =true) ->
+		return new Collection(name, @, autosave)
 
 module.exports = DB

@@ -3,7 +3,7 @@ path = require 'path'
 _ = require 'underscore'
 
 class Collection
-	constructor: (@name, @db) ->
+	constructor: (@name, @db, @autosave = true) ->
 		@items = []
 		@header = {
 			'$created': (new Date).toJSON(),
@@ -45,7 +45,7 @@ class Collection
 			element['$created'] = date
 			element['$updated'] = date
 			@items.push element
-		@save()
+		@save() if @autosave
 		return @items
 
 	# Retrieving data functions
@@ -70,6 +70,7 @@ class Collection
 				obj['$updated'] = (new Date).toJSON()
 				for key of obj
 					`this.items[i][key] = obj[key]`
+				@save() if @autosave
 				return true
 		return false
 
@@ -83,6 +84,7 @@ class Collection
 				obj['$updated'] = (new Date).toJSON()
 				for key of obj
 					`this.items[i][key] = obj[key]`
+				@save() if @autosave
 				return true
 		return false
 
@@ -92,6 +94,7 @@ class Collection
 			if element.cid is cid
 				`delete this.items[i]`
 				return true
+			@save() if @autosave
 		return false
 
 	deleteProperty: (cid, property) ->
@@ -105,6 +108,7 @@ class Collection
 				else
 					if element[property]?
 						`delete this.items[i][property]`
+				@save() if @autosave
 				return true
 		return false
 
