@@ -38,6 +38,7 @@ class Collection
 				elem['$created'] = date
 				elem['$updated'] = date
 				@items.push elem
+			@save()
 		else
 			date = (new Date).toJSON()
 			@header.lcid++
@@ -45,6 +46,7 @@ class Collection
 			element['$created'] = date
 			element['$updated'] = date
 			@items.push element
+		@save()
 
 	# Retrieving data functions
 	get: (cid) ->  _.findWhere(@items, {'cid': cid})
