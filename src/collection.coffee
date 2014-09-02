@@ -49,7 +49,8 @@ class Collection
 		return @items
 
 	upsert: (element, key, value) ->
-		if this.where("(@" + key + " ==  '" + value + "')").length > 0
+		check = @where("(@" + key + " ==  '" + value + "')")
+		if check.length > 0
 			this.update check[0].cid, element
 		else
 			this.insert element
