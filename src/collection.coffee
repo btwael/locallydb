@@ -31,6 +31,7 @@ class Collection
 	# Add data
 	insert: (element) ->
 		if element instanceof Array
+			result = []
 			for elem in element
 				date = (new Date).toJSON()
 				@header.lcid++
@@ -38,6 +39,7 @@ class Collection
 				elem['$created'] = date
 				elem['$updated'] = date
 				@items.push elem
+				result.push @header.lcid
 		else
 			date = (new Date).toJSON()
 			@header.lcid++
@@ -45,16 +47,18 @@ class Collection
 			element['$created'] = date
 			element['$updated'] = date
 			@items.push element
+			result = @header.lcid
 		@save() if @autosave
-		return @items
+		return result
 
 	upsert: (element, key, value) ->
 		check = @where("(@" + key + " ==  '" + value + "')")
 		if check.length > 0
-			this.update check[0].cid, element
+			@update check[0].cid, element
+			return true
 		else
-			this.insert element
-		return @items
+			@insert element
+			return @header.lcid
 
 	# Retrieving data functions
 	get: (cid) ->  _.findWhere(@items, {'cid': cid})
