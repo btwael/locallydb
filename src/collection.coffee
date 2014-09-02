@@ -45,6 +45,8 @@ class Collection
 			element['$created'] = date
 			element['$updated'] = date
 			@items.push element
+		@save()
+		@items
 
 	# Retrieving data functions
 	get: (cid) ->  _.findWhere(@items, {'cid': cid})
