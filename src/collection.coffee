@@ -48,6 +48,14 @@ class Collection
 		@save() if @autosave
 		return @items
 
+	upsert: (element, key, value) ->
+		check = @where("(@" + key + " ==  '" + value + "')")
+		if check.length > 0
+			this.update check[0].cid, element
+		else
+			this.insert element
+		return @items
+
 	# Retrieving data functions
 	get: (cid) ->  _.findWhere(@items, {'cid': cid})
 
