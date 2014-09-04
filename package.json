@@ -1,6 +1,6 @@
 {
 	"name": "locallydb",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "An easy-to-use and lightweight local storage database for node.js and node-webkit",
 	"author": {
 		"name": "Wael Amine Boutglay",
