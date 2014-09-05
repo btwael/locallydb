@@ -64,8 +64,8 @@ class Collection
 	get: (cid) ->  _.findWhere(@items, {'cid': cid})
 
 	where: (selection) ->
-		selection = selection.replace(/@/g, 'element.')
 		if typeof selection is 'string'
+			selection = selection.replace(/@/g, 'element.')
 			return _.filter(@items, (element) ->
 				_ = require 'underscore'
 				return eval(selection)
