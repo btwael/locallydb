@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="target-densitydpi=device-dpi">
+  <meta name="HandheldFriendly" content="true">
+  <link rel="canonical" href="http://underscorejs.org/">
+  <link rel="shortcut icon" href="http://underscorejs.org/favicon.ico" type="image/x-icon">
+  <title>LocallyDB</title>
+  <style>
+    body {
+      font-size: 14px;
+      line-height: 22px;
+      background: #f4f4f4 url(docs/images/background.png);
+      color: #000;
+      font-family: Helvetica Neue, Helvetica, Arial;
+    }
+    .interface {
+      font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif !important;
+    }
+    div#sidebar {
+      background: #fff;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      width: 200px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding: 15px 0 30px 30px;
+      border-right: 1px solid #bbb;
+      box-shadow: 0 0 20px #ccc; -webkit-box-shadow: 0 0 20px #ccc; -moz-box-shadow: 0 0 20px #ccc;
+    }
+    a.toc_title, a.toc_title:visited {
+      display: block;
+      color: black;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+      a.toc_title:hover {
+        text-decoration: underline;
+      }
+      #sidebar .version {
+        font-size: 10px;
+        font-weight: normal;
+      }
+    ul.toc_section {
+      font-size: 11px;
+      line-height: 14px;
+      margin: 5px 0 0 0;
+      padding-left: 0px;
+      list-style-type: none;
+      font-family: Lucida Grande;
+    }
+      .toc_section li {
+        cursor: pointer;
+        margin: 0 0 3px 0;
+      }
+        .toc_section li a {
+          text-decoration: none;
+          color: black;
+        }
+          .toc_section li a:hover {
+            text-decoration: underline;
+          }
+    div.container {
+      width: 550px;
+      margin: 40px 0 50px 260px;
+    }
+    img#logo {
+      width: 396px;
+      height: 69px;
+    }
+    div.warning {
+      margin-top: 15px;
+      font: bold 11px Arial;
+      color: #770000;
+    }
+    p {
+      margin: 20px 0;
+      width: 550px;
+    }
+    a, a:visited {
+      color: #444;
+    }
+    a:active, a:hover {
+      color: #000;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      padding-top: 20px;
+    }
+      h2 {
+        font-size: 20px;
+      }
+    b.header {
+      font-size: 16px;
+      line-height: 30px;
+    }
+    span.alias {
+      font-size: 14px;
+      font-style: italic;
+      margin-left: 20px;
+    }
+    table, tr, td {
+      margin: 0; padding: 0;
+    }
+      td {
+        padding: 2px 12px 2px 0;
+      }
+      table .rule {
+        height: 1px;
+        background: #ccc;
+        margin: 5px 0;
+      }
+    ul {
+      list-style-type: circle;
+      padding: 0 0 0 20px;
+    }
+      li {
+        margin-bottom: 10px;
+      }
+      code, pre, tt {
+        font-family: Monaco, Consolas, "Lucida Console", monospace;
+        font-size: 12px;
+        line-height: 18px;
+        font-style: normal;
+      }
+        tt {
+          padding: 0px 3px;
+          background: #fff;
+          border: 1px solid #ddd;
+          zoom: 1;
+        }
+        code {
+          margin-left: 20px;
+        }
+        pre {
+          font-size: 12px;
+          padding: 2px 0 2px 15px;
+          border-left: 5px solid #bbb;
+          margin: 0px 0 30px;
+        }
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 640px),
+          only screen and (-o-min-device-pixel-ratio: 3/2) and (max-width: 640px),
+          only screen and (min-device-pixel-ratio: 1.5) and (max-width: 640px) {
+      img {
+        max-width: 100%;
+      }
+      div#sidebar {
+        -webkit-overflow-scrolling: initial;
+        position: relative;
+        width: 90%;
+        height: 120px;
+        left: 0;
+        top: -7px;
+        padding: 10px 0 10px 30px;
+        border: 0;
+      }
+      img#logo {
+        width: auto;
+        height: auto;
+      }
+      div.container {
+        margin: 0;
+        width: 100%;
+      }
+      p, div.container ul {
+        max-width: 98%;
+        overflow-x: scroll;
+      }
+      pre {
+        overflow: scroll;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  
+
+  <div class="container">
+
+    <p id="introduction">
+      <img src="index_fichiers/locallydb.png" alt="Underscore.js">
+    </p>
+
+    <p>
+      <a href="https://github.com/btwael/locallydb">LocallyDB</a>
+       is an embedded JavaScript NoSql database for Node.js and node-webkit, 
+       designed to store and retrieve data locally and easily, stored in folders and files.
+       The concept of LocallyDB and API is easy to understand for better data storing in your desktop
+       applications or web application.
+    </p>
+
+    <p>
+      LocallyDB provides an very powerful data selecting method that the same javascript comparison and logical operators
+      like <tt>&gt;</tt>, <tt>&lt;</tt>, <tt>==</tt>, <tt>&amp;&amp;</tt>, <tt>||</tt>...
+    </p>
+
+    <p>
+      LocallyDB is very lightweight because it use less dependencies (only <a href="http://underscorejs.org/">underscore</a>)
+    </p>
+
+    <h2>Source Code</h2>
+
+    <p><a href="https://github.com/btwael/locallydb">Github Repo</a></p>
+
+    <p>The project is <a href="https://github.com/btwael/locallydb">hosted on GitHub</a>. You can report bugs and discuss features on the <a href="https://github.com/btwael/locallydb/issues">issues page</a></p>
+
+    <h2>Installation</h2>
+
+    <p>You can install <b>LocallyDB</b> via npm from your terminal (in your project folder) by typing:</p>
+    <pre>npm install locallydb</pre>
+
+    <div id="documentation">
+
+      <h2 id="example">An example that explain every thingh</h2>
+
+      <pre>
+// load locallydb
+var locallydb = require('locallydb');
+
+// load the database (folder) in './mydb', will be created if doesn't exist 
+var db = new locallydb('./mydb');
+
+// load the collection (file) in './mydb/monsters', will be created if doesn't exist 
+var collection = db.collection('monsters');
+
+// Insert/add/push a list of elements
+collection.insert([
+  {name: "sphinx", mythology: "greek", eyes: 2, sex: "f", hobbies: ["riddles","sitting","being a wonder"]},
+  {name: "hydra", mythology: "greek", eyes: 18, sex: "m", hobbies: ["coiling","terrorizing","growing"]},
+  {name: "huldra", mythology: "norse", eyes: 2, sex: "f", hobbies: ["luring","terrorizing"]},
+  {name: "cyclops", mythology: "greek", eyes: 1, sex: "m", hobbies: ["staring","terrorizing"]},
+  {name: "fenrir", mythology: "norse", eyes: 2, sex: "m", hobbies: ["growing","god-killing"]},
+  {name: "medusa",  mythology: "greek", eyes: 2, sex: "f", hobbies: ["coiling","staring"]}
+]);
+
+// Insert/add/push only one element
+collection.insert({name: "HamoIzm", mythology: "amazigh", eyes: 2, sex: "m", hobbies: ["riddles","hunting"]});
+
+// retrieve elements
+collection.where({name: "HamoIzm"});
+=> [{name: "HamoIzm", mythology: "amazigh", eyes: 2, sex: "m", hobbies: ["riddles","hunting"], cid:6}]
+
+// retrieve by cid (cid is not index in array, cid is related with addition)
+collection.get(3);
+=> {name: "cyclops", mythology: "greek", eyes: 1, sex: "m", hobbies: ["staring","terrorizing"], cid:3}
+
+// retrieve elements (monsters) with >= 2 eyes (an array)
+collection.where("@eyes >= 2");
+=> [
+  {name: "sphinx", mythology: "greek", eyes: 2, sex: "f", hobbies: ["riddles","sitting","being a wonder"], cid:0},
+  {name: "hydra", mythology: "greek", eyes: 18, sex: "m", hobbies: ["coiling","terrorizing","growing"], cid:1},
+  {name: "huldra", mythology: "norse", eyes: 2, sex: "f", hobbies: ["luring","terrorizing"], cid:2},
+  {name: "fenrir", mythology: "norse", eyes: 2, sex: "m", hobbies: ["growing","god-killing"], cid:4},
+  {name: "medusa",  mythology: "greek", eyes: 2, sex: "f", hobbies: ["coiling","staring"], cid:5},
+  {name: "HamoIzm", mythology: "amazigh", eyes: 2, sex: "m", hobbies: ["riddles","hunting"], cid:6}
+]
+
+// retrieve elements with (2 eyes and from the greek mythology) or from the amazigh mythology
+collection.where("(@eyes == 2 && @mythology == 'greek') || (@mythology == 'amazigh')");
+=> [
+  {name: "sphinx", mythology: "greek", eyes: 2, sex: "f", hobbies: ["riddles","sitting","being a wonder"], cid:0},
+  {name: "medusa",  mythology: "greek", eyes: 2, sex: "f", hobbies: ["coiling","staring"], cid:5},
+  {name: "HamoIzm", mythology: "amazigh", eyes: 2, sex: "m", hobbies: ["riddles","hunting"], cid:6}
+]
+
+// retrieve elements creation date
+collection.get(6).$created;
+
+// retrieve elements last update date
+collection.get(6).$updated;
+
+// List all elements in the collection
+collection.items;
+
+// Update an element, it will add un-exsited key and replace existed ($created and cid can't be changed)
+collection.update(5, {eyes: 3, food:"waloo"});
+collection.get(5);
+=> {name: "medusa",  mythology: "greek", eyes: 3, food:"waloo", sex: "f", hobbies: ["coiling","staring"], cid:5}
+
+// Replace the element with the same cid and $created
+collection.replace(6, {car: "Ferrari"});
+collection.get(6);
+=> {car: "Ferrari", cid:6}
+
+// Delete an item by cid
+collection.remove(1);
+
+// Save all to files
+collection.save();
+
+// Now the stored data in collection are
+[
+  {name: "sphinx", mythology: "greek", eyes: 2, sex: "f", hobbies: ["riddles","sitting","being a wonder"]},
+  {name: "huldra", mythology: "norse", eyes: 2, sex: "f", hobbies: ["luring","terrorizing"]},
+  {name: "cyclops", mythology: "greek", eyes: 1, sex: "m", hobbies: ["staring","terrorizing"]},
+  {name: "fenrir", mythology: "norse", eyes: 2, sex: "m", hobbies: ["growing","god-killing"]},
+  {name: "medusa",  mythology: "greek", eyes: 3, food:"waloo", sex: "f", hobbies: ["coiling","staring"], cid:5},
+  {car: "Ferrari", cid:6}
+]
+</pre>
+
+      <h2 id="changelog">Change Log</h2>
+
+      <p id="0.0.1">
+        <b class="header">0.0.1</b> — <small><i>Auguest 25, 2014</i></small><br>
+        Add updating methods (update and replace).
+      </p>
+ 
+      <p id="0.0.0">
+        <b class="header">0.0.0</b> — <small><i>Auguest 18, 2014</i></small><br>
+        Initial release of LocallyDB.
+      </p>
+    </div>
+
+  </div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-31674521-2', 'wamalaka.com');
+  ga('send', 'pageview');
+
+</script>
+
+</body></html>
