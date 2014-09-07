@@ -65,7 +65,7 @@
           }
     div.container {
       width: 550px;
-      margin: 40px 0 50px 260px;
+      margin: 40px 0 50px 100px;
     }
     img#logo {
       width: 396px;
@@ -186,26 +186,23 @@
 
     <p>
       <a href="https://github.com/btwael/locallydb">LocallyDB</a>
-       is an embedded JavaScript NoSql database for Node.js and node-webkit, 
-       designed to store and retrieve data locally and easily, stored in folders and files.
-       The concept of LocallyDB and API is easy to understand for better data storing in your desktop
-       applications or web application.
+       is an embedded JavaScript NoSql database for Node.js and node-webkit. It's designed to store and retrieve data locally, easily and in stored folders and files. The concept of LocallyDB as an API is easy to understand makes for better data storing in your desktop and web applications.
     </p>
 
     <p>
-      LocallyDB provides an very powerful data selecting method that the same javascript comparison and logical operators
-      like <tt>&gt;</tt>, <tt>&lt;</tt>, <tt>==</tt>, <tt>&amp;&amp;</tt>, <tt>||</tt>...
+      LocallyDB provides a very powerful data selection method with the same javascript comparison and logical operators your use to:
+      <tt>&gt;</tt>, <tt>&lt;</tt>, <tt>==</tt>, <tt>&amp;&amp;</tt>, <tt>||</tt>...
     </p>
 
     <p>
-      LocallyDB is very lightweight because it use less dependencies (only <a href="http://underscorejs.org/">underscore</a>)
+      LocallyDB is very lightweight and it only has one dependency, <a href="http://underscorejs.org/">underscore</a>
     </p>
 
     <h2>Source Code</h2>
 
     <p><a href="https://github.com/btwael/locallydb">Github Repo</a></p>
 
-    <p>The project is <a href="https://github.com/btwael/locallydb">hosted on GitHub</a>. You can report bugs and discuss features on the <a href="https://github.com/btwael/locallydb/issues">issues page</a></p>
+    <p>The project is hosted on GitHub with bugs and feature discussion on the <a href="https://github.com/btwael/locallydb/issues">issues page</a>.</p>
 
     <h2>Installation</h2>
 
@@ -258,18 +255,18 @@ collection.where("@eyes >= 2");
   {name: "HamoIzm", mythology: "amazigh", eyes: 2, sex: "m", hobbies: ["riddles","hunting"], cid:6}
 ]
 
-// retrieve elements with (2 eyes and from the greek mythology) or from the amazigh mythology
-collection.where("(@eyes == 2 && @mythology == 'greek') || (@mythology == 'amazigh')");
+// retrieve elements with (2 eyes and from the greek mythology) or from the amazing mythology
+collection.where("(@eyes == 2 && @mythology == 'greek') || (@mythology == 'amazing')");
 => [
   {name: "sphinx", mythology: "greek", eyes: 2, sex: "f", hobbies: ["riddles","sitting","being a wonder"], cid:0},
   {name: "medusa",  mythology: "greek", eyes: 2, sex: "f", hobbies: ["coiling","staring"], cid:5},
-  {name: "HamoIzm", mythology: "amazigh", eyes: 2, sex: "m", hobbies: ["riddles","hunting"], cid:6}
+  {name: "HamoIzm", mythology: "amazing", eyes: 2, sex: "m", hobbies: ["riddles","hunting"], cid:6}
 ]
 
 // retrieve elements creation date
 collection.get(6).$created;
 
-// retrieve elements last update date
+// retrieve elements last edit date
 collection.get(6).$updated;
 
 // List all elements in the collection
@@ -291,7 +288,7 @@ collection.remove(1);
 // Save all to files
 collection.save();
 
-// Now the stored data in collection are
+// Now the data in the collection is
 [
   {name: "sphinx", mythology: "greek", eyes: 2, sex: "f", hobbies: ["riddles","sitting","being a wonder"]},
   {name: "huldra", mythology: "norse", eyes: 2, sex: "f", hobbies: ["luring","terrorizing"]},
@@ -303,6 +300,21 @@ collection.save();
 </pre>
 
       <h2 id="changelog">Change Log</h2>
+
+      <p id="0.0.3">
+        <b class="header">0.0.3</b> — <small><i>September 05, 2014</i></small><br>
+          Fix <tt>where</tt> function.
+      </p>
+
+      <p id="0.0.2">
+        <b class="header">0.0.2</b> — <small><i>September 04, 2014</i></small><br>
+          <ul>
+            <li>Collection auto saving as default</li>
+            <li>Add <tt>deleteProperty</tt> - (function)</li>
+            <li>Add <tt>upsert</tt> - (function)</li>
+            <li>Optimize what functions should return.</li>
+          </ul>
+      </p>
 
       <p id="0.0.1">
         <b class="header">0.0.1</b> — <small><i>Auguest 25, 2014</i></small><br>
