@@ -12,7 +12,7 @@ class Collection
 		}
 		@_cpath = path.join @db.path, @name
 		if fs.existsSync(@_cpath)
-			data = JSON.parse(fs.readFileSync(@_cpath, 'utf8'))
+			data = JSON.parse fs.readFileSync @_cpath, 'utf8'
 			@items = data.items
 			@header = data.header
 		else
