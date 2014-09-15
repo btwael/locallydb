@@ -1,4 +1,5 @@
 fs = require 'fs'
+path = require 'path'
 
 Collection = require './collection'
 
@@ -13,5 +14,15 @@ class DB
 
 	collection: (name, autosave =true) ->
 		return new Collection(name, @, autosave)
+
+	getCollectionNames: () ->
+		list = fs.readdirSync(@path)
+		res = []
+		for file, i in list
+			_path = path.join @path, file
+			try
+				JSON.parse(fs.readFileSync(_path, 'utf8'))
+				res.push file
+		return res
 
 module.exports = DB
