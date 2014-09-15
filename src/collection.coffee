@@ -2,6 +2,11 @@ fs = require 'fs'
 path = require 'path'
 _ = require 'underscore'
 
+Array::remove = (from, to) ->
+	rest = @slice((to || from) + 1 || @length)
+	@length = if from < 0 then @length + from else from
+	return @push.apply @, rest
+
 class Collection
 	constructor: (@name, @db, @autosave = true) ->
 		@items = []
@@ -104,7 +109,7 @@ class Collection
 	remove: (cid) ->
 		for element, i in @items
 			if element.cid is cid
-				`delete this.items[i]`
+				@items.remove i
 				return true
 			@save() if @autosave
 		return false
