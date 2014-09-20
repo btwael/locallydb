@@ -2,12 +2,14 @@ fs = require 'fs'
 path = require 'path'
 _ = require 'underscore'
 
+list = require './list'
+
 Array::remove = (from, to) ->
 	rest = @slice((to || from) + 1 || @length)
 	@length = if from < 0 then @length + from else from
 	return @push.apply @, rest
 
-class Collection
+class Collection extends list
 	constructor: (@name, @db, @autosave = true) ->
 		@items = []
 		@header = {
@@ -67,16 +69,6 @@ class Collection
 
 	# Retrieving data functions
 	get: (cid) ->  _.findWhere(@items, {'cid': cid})
-
-	where: (selection) ->
-		if typeof selection is 'string'
-			selection = selection.replace(/@/g, 'element.')
-			return _.filter(@items, (element) ->
-				_ = require 'underscore'
-				return eval(selection)
-			)
-		else
-			return _.where(@items, selection)
 
 	# Updatig data
 	update: (cid, obj) ->
