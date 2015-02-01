@@ -102,8 +102,8 @@ class Collection extends list
 		for element, i in @items
 			if element.cid is cid
 				@items.remove i
+				@save() if @autosave
 				return true
-			@save() if @autosave
 		return false
 
 	deleteProperty: (cid, property) ->
