@@ -15,6 +15,10 @@ class DB
 	collection: (name, autosave =true) ->
 		return new Collection(name, @, autosave)
 
+	removeCollection: (name) ->
+		collecton = @collection(name)
+		fs.unlinkSync(collection._cpath)
+
 	getCollectionNames: () ->
 		list = fs.readdirSync(@path)
 		res = []

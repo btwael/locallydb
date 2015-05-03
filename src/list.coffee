@@ -12,6 +12,8 @@ class List
 	shift: (element) -> @items.shift element
 	unshift: (element) -> @items.unshift element
 
+	clear: -> @items = []
+
 	remove: (from, to) ->
 		rest = @items.slice((to || from) + 1 || @items.length)
 		@items.length = if from < 0 then @items.length + from else from
