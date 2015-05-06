@@ -16,7 +16,7 @@ class DB
 		return new Collection(name, @, autosave)
 
 	removeCollection: (name) ->
-		collecton = @collection(name)
+		collection = @collection(name)
 		fs.unlinkSync(collection._cpath)
 
 	getCollectionNames: () ->
